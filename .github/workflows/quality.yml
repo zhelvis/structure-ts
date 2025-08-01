@@ -1,6 +1,5 @@
-on:
-  push:
-  pull_request:
+name: Code quality
+on: pull_request
 
 jobs:
   lint:

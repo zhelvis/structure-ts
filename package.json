@@ -1,7 +1,7 @@
 {
 	"name": "structure-ts",
 	"module": "dist/index.js",
-  "types": "dist/index.d.ts",
+	"types": "dist/index.d.ts",
 	"type": "module",
 	"peerDependencies": {
 		"typescript": "^5"
