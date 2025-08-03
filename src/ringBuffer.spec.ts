@@ -130,14 +130,14 @@ describe("RingBuffer", () => {
 		it("should add items to the start of the buffer and return new size", () => {
 			const buffer = new RingBuffer(5);
 			expect(buffer.unshift(1, 2, 3)).toBe(3);
-			expect(Array.from(buffer)).toEqual([3, 2, 1]);
+			expect(Array.from(buffer)).toEqual([1, 2, 3]);
 		});
 
 		it("should overwrite items when capacity is exceeded", () => {
 			const buffer = new RingBuffer(3, [1, 2, 3]);
 			expect(buffer.unshift(0)).toBe(3);
 			expect(Array.from(buffer)).toEqual([0, 1, 2]);
-			expect(buffer.unshift(-1, -2)).toBe(3);
+			expect(buffer.unshift(-2, -1)).toBe(3);
 			expect(Array.from(buffer)).toEqual([-2, -1, 0]);
 		});
 	});
