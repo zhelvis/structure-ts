@@ -112,6 +112,11 @@ describe("RingBuffer", () => {
 			const buffer = new RingBuffer(5);
 			expect(buffer.pop()).toBeUndefined();
 		});
+
+		it("should correctly calculate tail position when capacity equals 1", () => {
+			const buffer = new RingBuffer(1, [1]);
+			expect(buffer.pop()).toBe(1);
+		});
 	});
 
 	describe("unshift", () => {

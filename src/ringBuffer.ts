@@ -85,7 +85,7 @@ export class RingBuffer<T> {
 	 */
 	*[Symbol.iterator](): Iterator<T | undefined> {
 		let index = 0;
-		while (index < this.#size) {
+		while (index < this.#size) {		
 			yield this.get(index);
 			index++;
 		}
@@ -123,8 +123,9 @@ export class RingBuffer<T> {
 			return undefined;
 		}
 
-		const item = this.#buffer[this.#tail - 1];
-		this.#tail = (this.#tail - 1 + this.#capacity) % this.#capacity;
+		const lastIndex = (this.#tail - 1 + this.#capacity) % this.#capacity;
+		const item = this.#buffer[lastIndex];
+		this.#tail = lastIndex;
 		this.#size--;
 
 		return item;
