@@ -41,8 +41,9 @@ describe("RingBuffer", () => {
 			expect(Array.from(buffer)).toEqual([1, 2, 3]);
 		});
 
-		it("should throw error if initial items exceed capacity", () => {
-			expect(() => new RingBuffer(3, [1, 2, 3, 4])).toThrow(Error);
+		it("should overwrite slots if initial items exceed capacity", () => {
+			const buffer = new RingBuffer(3, [1, 2, 3, 4]);
+			expect(Array.from(buffer)).toEqual([2, 3, 4]);
 		});
 	});
 
@@ -60,6 +61,12 @@ describe("RingBuffer", () => {
 		it("should return undefined for out of bounds index", () => {
 			const buffer = new RingBuffer(5, [1, 2, 3]);
 			expect(buffer.get(3)).toBeUndefined();
+
+			buffer.shift();
+			expect(buffer.get(-3)).toBeUndefined();
+
+			buffer.pop();
+			expect(buffer.get(2)).toBeUndefined();
 		});
 	});
 

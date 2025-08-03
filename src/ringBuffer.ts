@@ -25,22 +25,13 @@ export class RingBuffer<T> {
 
 	constructor(capacity: number, items?: Array<T>) {
 		this.#capacity = capacity;
+		this.#buffer = new Array<T>(capacity);
 		this.#head = 0;
+		this.#size = 0;
+		this.#tail = 0;
 
 		if (items) {
-			if (items.length > capacity) {
-				throw new Error(
-					`Items length (${items.length}) exceeds buffer capacity (${capacity})`,
-				);
-			}
-
-			this.#buffer = items;
-			this.#size = items.length;
-			this.#tail = items.length % capacity;
-		} else {
-			this.#buffer = new Array<T>(capacity);
-			this.#size = 0;
-			this.#tail = 0;
+			this.push(...items);
 		}
 	}
 
@@ -51,10 +42,6 @@ export class RingBuffer<T> {
 	 * @returns The item at the specified index, or undefined if the index is out of bounds.
 	 */
 	get(index: number): T | undefined {
-		if (index >= this.#size) {
-			return undefined;
-		}
-
 		if (index < 0) {
 			return this.#buffer[
 				(this.#tail + index + this.#capacity) % this.#capacity
@@ -85,7 +72,7 @@ export class RingBuffer<T> {
 	 */
 	*[Symbol.iterator](): Iterator<T | undefined> {
 		let index = 0;
-		while (index < this.#size) {		
+		while (index < this.#size) {
 			yield this.get(index);
 			index++;
 		}
@@ -125,6 +112,7 @@ export class RingBuffer<T> {
 
 		const lastIndex = (this.#tail - 1 + this.#capacity) % this.#capacity;
 		const item = this.#buffer[lastIndex];
+		delete this.#buffer[lastIndex];
 		this.#tail = lastIndex;
 		this.#size--;
 
@@ -164,6 +152,7 @@ export class RingBuffer<T> {
 		}
 
 		const item = this.#buffer[this.#head];
+		delete this.#buffer[this.#head];
 		this.#head = (this.#head + 1) % this.#capacity;
 		this.#size--;
 
