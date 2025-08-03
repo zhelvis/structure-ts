@@ -70,10 +70,11 @@ export class RingBuffer<T> {
 	/**
 	 * An iterator for the items in the buffer.
 	 */
-	*[Symbol.iterator](): Iterator<T | undefined> {
+	*[Symbol.iterator](): Iterator<T> {
 		let index = 0;
 		while (index < this.#size) {
-			yield this.get(index);
+			// Can safely cast to T since we iterate over valid range
+			yield this.get(index) as T;
 			index++;
 		}
 	}
