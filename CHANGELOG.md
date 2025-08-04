@@ -11,4 +11,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `RingBuffer`: A ring buffer (or circular buffer) data structure for TypeScript, useful for buffering data streams and implementing memory efficient queues and stacks.
 
-[unreleased]: FIXME
+[unreleased]: https://github.com/zhelvis/structure-ts/compare/e6aeb00a68910c17cb453a70388277fb32d61e06...HEAD

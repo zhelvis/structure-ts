@@ -12,6 +12,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Install bun
         uses: oven-sh/setup-bun@v2
+      - name: Install dependencies
+        run: bun install
       - name: Build static files
         run: bunx typedoc src/index.ts
       - name: Upload static files as artifact
