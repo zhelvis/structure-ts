@@ -2,6 +2,9 @@
 
 Data structures for typescript.
 
+- `RingBuffer` A ring buffer (or circular buffer) is a data structure that uses a single, fixed-size buffer as if it were connected end-to-end.
+It is particularly useful for buffering data streams and implementing memory efficient queues and stacks.
+
 
 ## Development
 

@@ -12,5 +12,10 @@ export default defineConfig({
 		dir: "dist",
 		format: "esm",
 		sourcemap: true,
+		minify: {
+			mangle: true,
+			compress: true,
+			removeWhitespace: true,
+		},
 	},
 });
