@@ -35,36 +35,57 @@ export class RingBuffer<T> {
 		}
 	}
 
+
 	/**
-	 * Gets the item at index, allowing for positive and negative integers.
-	 * Negative integers count back from the last item in the buffer.
-	 * @param index - The index of the item to retrieve.
-	 * @returns The item at the specified index, or undefined if the index is out of bounds.
+	 * Calculates the internal buffer index for a given index, allowing for both positive and negative integers.
+	 * @param index - The index to convert.
+	 * @returns The internal buffer index, or -1 if the index is out of bounds.
 	 */
-	get(index: number): T | undefined {
+	#calcInternalIndex(index: number): number {
 		if (index < 0) {
-			return this.#buffer[
-				(this.#tail + index + this.#capacity) % this.#capacity
-			];
+			// Check out of bounds for negative index
+			if (index < -this.#size) {
+				return -1;
+			}
+
+			return (this.#tail + index + this.#capacity) % this.#capacity;
 		}
 
-		return this.#buffer[(this.#head + index) % this.#capacity];
+		// Check out of bounds for positive index
+		if (index >= this.#size) {
+			return -1;
+		}
+
+		return (this.#head + index) % this.#capacity;
 	}
 
 	/**
-	 * Updates an item in the buffer at the specified index.
-	 * @param index - The index of the item to update.
+	 * Gets the item at index, allowing for positive and negative integers.
+	 * Negative integers count back from the last item in the buffer.
+	 * @param index - The index of the item to get.
+	 * @returns The item at the specified index, or undefined if the index is out of bounds.
+	 */
+	get(index: number): T | undefined {
+		return this.#buffer[this.#calcInternalIndex(index)];
+	}
+
+
+	/**
+	 * Sets an item at index, allowing for positive and negative integers.
+	 * Negative integers count back from the last item in the buffer.
+	 * 
+	 * @param index - The index of the item to set.
 	 * @param item - The new item to set at the specified index.
 	 * @throws Error if the index is out of bounds.
 	 */
 	set(index: number, item: T): void {
-		if (index < 0 || index >= this.#size) {
-			throw new Error(
-				`Index ${index} is out of bounds for buffer size ${this.#size}`,
-			);
+		const internalIndex = this.#calcInternalIndex(index);
+
+		if (internalIndex === -1) {
+			throw new RangeError("Index out of bounds");
 		}
 
-		this.#buffer[(this.#head + index) % this.#capacity] = item;
+		this.#buffer[internalIndex] = item;
 	}
 
 	/**

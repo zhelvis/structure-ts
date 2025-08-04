@@ -61,6 +61,9 @@ describe("RingBuffer", () => {
 		it("should return undefined for out of bounds index", () => {
 			const buffer = new RingBuffer(5, [1, 2, 3]);
 			expect(buffer.get(3)).toBeUndefined();
+			expect(buffer.get(-4)).toBeUndefined();
+			expect(buffer.get(100)).toBeUndefined();
+			expect(buffer.get(-100)).toBeUndefined();
 
 			buffer.shift();
 			expect(buffer.get(-3)).toBeUndefined();
@@ -71,16 +74,22 @@ describe("RingBuffer", () => {
 	});
 
 	describe("set", () => {
-		it("should set item at specified slot", () => {
+		it("should set item at positive index", () => {
 			const buffer = new RingBuffer(5, [1, 2, 3]);
 			buffer.set(1, 20);
 			expect(buffer.get(1)).toBe(20);
 		});
 
+		it("should set item at negative index", () => {
+			const buffer = new RingBuffer(5, [1, 2, 3]);
+			buffer.set(-1, 30);
+			expect(buffer.get(2)).toBe(30);
+		});
+
 		it("should throw error for out of bounds index", () => {
 			const buffer = new RingBuffer(5, [1, 2, 3]);
-			expect(() => buffer.set(-1, 10)).toThrow(Error);
-			expect(() => buffer.set(3, 10)).toThrow(Error);
+			expect(() => buffer.set(-4, 10)).toThrow(RangeError);
+			expect(() => buffer.set(3, 10)).toThrow(RangeError);
 		});
 	});
 
