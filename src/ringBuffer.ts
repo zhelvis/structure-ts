@@ -35,7 +35,6 @@ export class RingBuffer<T> {
 		}
 	}
 
-
 	/**
 	 * Calculates the internal buffer index for a given index, allowing for both positive and negative integers.
 	 * @param index - The index to convert.
@@ -69,11 +68,10 @@ export class RingBuffer<T> {
 		return this.#buffer[this.#calcInternalIndex(index)];
 	}
 
-
 	/**
 	 * Sets an item at index, allowing for positive and negative integers.
 	 * Negative integers count back from the last item in the buffer.
-	 * 
+	 *
 	 * @param index - The index of the item to set.
 	 * @param item - The new item to set at the specified index.
 	 * @throws Error if the index is out of bounds.
