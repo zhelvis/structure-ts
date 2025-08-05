@@ -5,7 +5,7 @@ Data structures for typescript.
 ## Installation
 
 ```
-npm install structure-ts
+npm install @zhelvis/structure-ts
 ```
 
 ## What's inside?

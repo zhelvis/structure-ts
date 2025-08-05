@@ -1,5 +1,5 @@
 {
-	"name": "structure-ts",
+	"name": "@zhelvis/structure-ts",
 	"version": "0.1.0",
 	"description": "A collection of data structures implemented in TypeScript.",
 	"author": "Vladimir Zhelvis <zhelvisvladimir@gmail.com>",
