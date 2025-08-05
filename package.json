@@ -1,8 +1,20 @@
 {
 	"name": "structure-ts",
+	"version": "0.1.0",
+	"description": "A collection of data structures implemented in TypeScript.",
+	"author": "Vladimir Zhelvis <zhelvisvladimir@gmail.com>",
+	"homepage": "https://zhelvis.github.io/structure-ts/index.html",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zhelvis/structure-ts.git"
+	},
+	"license": "MIT",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"type": "module",
+	"files": [
+		"dist"
+	],
 	"peerDependencies": {
 		"typescript": "^5"
 	},

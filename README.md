@@ -2,11 +2,19 @@
 
 Data structures for typescript.
 
-- `RingBuffer` A ring buffer (or circular buffer) is a data structure that uses a single, fixed-size buffer as if it were connected end-to-end.
+## Installation
+
+```
+npm install structure-ts
+```
+
+## What's inside?
+
+- [`RingBuffer`](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer.ts) -
+⚙️ **[API](https://zhelvis.github.io/structure-ts/classes/RingBuffer.html)** 
+🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer.bench.md)**  
+A ring buffer (or circular buffer) is a data structure that uses a single, fixed-size buffer as if it were connected end-to-end.
 It is particularly useful for buffering data streams and implementing memory efficient queues and stacks.
-
-
-📚 **[Docs]**
 
 
 ## Development
