@@ -38,52 +38,37 @@ export class RingBuffer<T> {
 	/**
 	 * Calculates the internal buffer index for a given index, allowing for both positive and negative integers.
 	 * @param index - The index to convert.
-	 * @returns The internal buffer index, or -1 if the index is out of bounds.
+	 * @returns The internal buffer index.
+	 * @throws RangeError if the index is out of bounds.
 	 */
 	#calcInternalIndex(index: number): number {
-		if (index < 0) {
-			// Check out of bounds for negative index
-			if (index < -this.#size) {
-				return -1;
-			}
-
-			return (this.#tail + index + this.#capacity) % this.#capacity;
+		if (index < -this.#size || index >= this.#size) {
+			throw new RangeError("Index out of bounds");
 		}
 
-		// Check out of bounds for positive index
-		if (index >= this.#size) {
-			return -1;
-		}
-
-		return (this.#head + index) % this.#capacity;
+		return (this.#head + index + (this.#size & (index >> 31))) % this.#capacity;
 	}
 
 	/**
 	 * Gets the item at index, allowing for positive and negative integers.
 	 * Negative integers count back from the last item in the buffer.
 	 * @param index - The index of the item to get.
-	 * @returns The item at the specified index, or undefined if the index is out of bounds.
+	 * @returns The item at the specified index.
+	 * @throws RangeError if the index is out of bounds.
 	 */
-	get(index: number): T | undefined {
+	get(index: number): T {
 		return this.#buffer[this.#calcInternalIndex(index)];
 	}
 
 	/**
 	 * Sets an item at index, allowing for positive and negative integers.
 	 * Negative integers count back from the last item in the buffer.
-	 *
 	 * @param index - The index of the item to set.
 	 * @param item - The new item to set at the specified index.
-	 * @throws Error if the index is out of bounds.
+	 * @throws RangeError if the index is out of bounds.
 	 */
 	set(index: number, item: T): void {
-		const internalIndex = this.#calcInternalIndex(index);
-
-		if (internalIndex === -1) {
-			throw new RangeError("Index out of bounds");
-		}
-
-		this.#buffer[internalIndex] = item;
+		this.#buffer[this.#calcInternalIndex(index)] = item;
 	}
 
 	/**
@@ -92,8 +77,7 @@ export class RingBuffer<T> {
 	*[Symbol.iterator](): Iterator<T> {
 		let index = 0;
 		while (index < this.#size) {
-			// Can safely cast to T since we iterate over valid range
-			yield this.get(index) as T;
+			yield this.get(index);
 			index++;
 		}
 	}

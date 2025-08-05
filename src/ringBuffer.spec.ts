@@ -58,18 +58,16 @@ describe("RingBuffer", () => {
 			expect(buffer.get(-2)).toBe(2);
 		});
 
-		it("should return undefined for out of bounds index", () => {
+		it("should throw error for out of bounds index", () => {
 			const buffer = new RingBuffer(5, [1, 2, 3]);
-			expect(buffer.get(3)).toBeUndefined();
-			expect(buffer.get(-4)).toBeUndefined();
-			expect(buffer.get(100)).toBeUndefined();
-			expect(buffer.get(-100)).toBeUndefined();
+			expect(() => buffer.get(3)).toThrow(RangeError);
+			expect(() => buffer.get(-4)).toThrow(RangeError);
 
 			buffer.shift();
-			expect(buffer.get(-3)).toBeUndefined();
+			expect(() => buffer.get(-3)).toThrow(RangeError);
 
 			buffer.pop();
-			expect(buffer.get(2)).toBeUndefined();
+			expect(() => buffer.get(2)).toThrow(RangeError);
 		});
 	});
 
