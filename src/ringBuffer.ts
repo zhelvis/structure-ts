@@ -105,7 +105,8 @@ export class RingBuffer<T> {
 	 * @returns The new size of the buffer.
 	 */
 	push(...items: T[]): number {
-		for (const item of items) {
+		for (let i = 0; i < items.length; i++) {
+			const item = items[i];
 			if (this.#size === this.#capacity) {
 				this.#head = (this.#head + 1) % this.#capacity;
 			}
@@ -147,8 +148,7 @@ export class RingBuffer<T> {
 	 */
 	unshift(...items: T[]): number {
 		for (let i = items.length - 1; i >= 0; i--) {
-			// Can safely cast to T since we iterate over input
-			const item = items[i] as T;
+			const item = items[i];
 
 			if (this.#size === this.#capacity) {
 				this.#tail = (this.#tail - 1 + this.#capacity) % this.#capacity;
