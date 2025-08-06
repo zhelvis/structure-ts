@@ -12,7 +12,8 @@ npm install @zhelvis/structure-ts
 
 - [`RingBuffer`](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer.ts) -
 ⚙️ **[API](https://zhelvis.github.io/structure-ts/classes/RingBuffer.html)** 
-🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer.bench.md)**  
+🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer.bench.md)**
+🎮 **[Playground](https://bolt.new/~/structure-ts-ring-buffer)**  
 A ring buffer (or circular buffer) is a data structure that uses a single, fixed-size buffer as if it were connected end-to-end.
 It is particularly useful for buffering data streams and implementing memory efficient queues and stacks.
 
