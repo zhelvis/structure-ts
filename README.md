@@ -10,6 +10,11 @@ npm install @zhelvis/structure-ts
 
 ## What's inside?
 
+- [`Queue`](https://github.com/zhelvis/structure-ts/blob/main/src/queue.ts) -
+⚙️ **[API](https://zhelvis.github.io/structure-ts/classes/Queue.html)**
+🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/queue.bench.md)** 
+A queue is a data structure based on doubly linked list that follows the FIFO (first-in, first-out) principle.
+
 - [`RingBuffer`](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer.ts) -
 ⚙️ **[API](https://zhelvis.github.io/structure-ts/classes/RingBuffer.html)** 
 🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer.bench.md)**
