@@ -56,9 +56,14 @@ export class Queue<T> {
 		if (!this.#start) return undefined;
 		const value = this.#start.value;
 		this.#start = this.#start.next;
+
 		if (this.#start) {
+			delete this.#start.prev;
 			this.#start.prev = undefined;
+		} else {
+			this.#end = undefined;
 		}
+
 		return value;
 	}
 
