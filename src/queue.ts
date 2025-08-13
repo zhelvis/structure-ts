@@ -17,9 +17,6 @@ export class Queue<T> {
 	 * @param items Optional array of items to enqueue at construction.
 	 */
 	constructor(items?: Array<T>) {
-		this.#start;
-		this.#end;
-
 		if (items) {
 			for (let i = 0; i < items.length; i++) {
 				this.enqueue(items[i]);
@@ -59,6 +56,9 @@ export class Queue<T> {
 		if (!this.#start) return undefined;
 		const value = this.#start.value;
 		this.#start = this.#start.next;
+		if (this.#start) {
+			this.#start.prev = undefined;
+		}
 		return value;
 	}
 

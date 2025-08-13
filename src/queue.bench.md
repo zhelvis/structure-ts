@@ -1,38 +1,38 @@
-clk: ~2.99 GHz
+clk: ~3.13 GHz
 cpu: Apple M1 Pro
 runtime: bun 1.2.9 (arm64-darwin)
 
 | benchmark                              |              avg |         min |         p75 |         p99 |         max |
 | -------------------------------------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| Queue.enqueue (size: 1)                | ` 26.59 ns/iter` | ` 21.07 ns` | ` 27.71 ns` | ` 63.96 ns` | ` 78.01 ns` |
-| Queue.enqueue (size: 10)               | ` 26.65 ns/iter` | ` 22.11 ns` | ` 28.71 ns` | ` 33.86 ns` | ` 35.90 ns` |
-| Queue.enqueue (size: 100)              | ` 26.61 ns/iter` | ` 21.86 ns` | ` 29.01 ns` | ` 34.71 ns` | ` 36.88 ns` |
-| Queue.enqueue (size: 1000)             | ` 26.35 ns/iter` | ` 22.09 ns` | ` 27.99 ns` | ` 31.92 ns` | ` 32.50 ns` |
-| Queue.enqueue (size: 10000)            | ` 24.84 ns/iter` | ` 20.10 ns` | ` 27.63 ns` | ` 32.02 ns` | ` 34.48 ns` |
-| Queue.enqueue (size: 100000)           | ` 26.49 ns/iter` | ` 21.01 ns` | ` 29.19 ns` | ` 35.93 ns` | ` 36.28 ns` |
-| Queue.enqueue (size: 1000000)          | ` 26.02 ns/iter` | ` 22.16 ns` | ` 27.31 ns` | ` 30.08 ns` | ` 30.16 ns` |
-| Queue.enqueue (size: 10000000)         | ` 28.34 ns/iter` | ` 24.94 ns` | ` 29.54 ns` | ` 30.83 ns` | ` 31.09 ns` |
-| Queue.dequeue (size: 1)                | `  2.32 ns/iter` | `  2.04 ns` | `  2.30 ns` | `  5.20 ns` | `  8.69 ns` |
-| Queue.dequeue (size: 10)               | `  2.82 ns/iter` | `  2.55 ns` | `  2.78 ns` | `  7.14 ns` | ` 16.88 ns` |
-| Queue.dequeue (size: 100)              | `  3.26 ns/iter` | `  3.17 ns` | `  3.29 ns` | `  3.64 ns` | `  7.33 ns` |
-| Queue.dequeue (size: 1000)             | `  3.14 ns/iter` | `  3.04 ns` | `  3.16 ns` | `  4.57 ns` | `  7.32 ns` |
-| Queue.dequeue (size: 10000)            | `  2.16 ns/iter` | `  1.99 ns` | `  2.13 ns` | `  4.79 ns` | ` 33.59 ns` |
-| Queue.dequeue (size: 100000)           | `  3.29 ns/iter` | `  3.04 ns` | `  3.19 ns` | `  8.77 ns` | ` 10.43 ns` |
-| Queue.dequeue (size: 1000000)          | `  4.57 ns/iter` | `  4.36 ns` | `  4.67 ns` | `  5.16 ns` | `  5.42 ns` |
-| Queue.dequeue (size: 10000000)         | `  7.58 ns/iter` | `  5.01 ns` | `  5.38 ns` | `  5.85 ns` | ` 33.24 ns` |
-| Queue serialization (size: 1)          | ` 46.24 ns/iter` | ` 43.20 ns` | ` 47.51 ns` | ` 58.33 ns` | ` 74.35 ns` |
-| Queue serialization (size: 10)         | `122.51 ns/iter` | `118.12 ns` | `121.84 ns` | `150.51 ns` | `232.15 ns` |
-| Queue serialization (size: 100)        | `  6.45 µs/iter` | `  4.67 µs` | `  7.04 µs` | ` 13.92 µs` | ` 37.13 µs` |
-| Queue serialization (size: 1000)       | `  8.73 µs/iter` | `  8.42 µs` | `  8.84 µs` | `  9.26 µs` | `  9.41 µs` |
-| Queue serialization (size: 10000)      | ` 84.19 µs/iter` | ` 77.42 µs` | ` 88.00 µs` | `103.38 µs` | `127.71 µs` |
-| Queue serialization (size: 100000)     | `776.40 µs/iter` | `739.17 µs` | `794.08 µs` | `871.79 µs` | `  1.11 ms` |
-| Queue serialization (size: 1000000)    | `  7.76 ms/iter` | `  7.56 ms` | `  7.81 ms` | `  8.19 ms` | `  8.23 ms` |
-| Queue serialization (size: 10000000)   | ` 77.67 ms/iter` | ` 75.47 ms` | ` 79.23 ms` | ` 79.76 ms` | ` 80.88 ms` |
-| Queue deserialization (size: 1)        | ` 24.86 ns/iter` | ` 23.52 ns` | ` 25.04 ns` | ` 32.79 ns` | `116.23 ns` |
-| Queue deserialization (size: 10)       | `197.51 ns/iter` | `190.87 ns` | `200.48 ns` | `223.83 ns` | `322.10 ns` |
-| Queue deserialization (size: 100)      | `  1.79 µs/iter` | `  1.78 µs` | `  1.79 µs` | `  1.86 µs` | `  1.92 µs` |
-| Queue deserialization (size: 1000)     | ` 18.23 µs/iter` | ` 18.07 µs` | ` 18.33 µs` | ` 18.44 µs` | ` 18.72 µs` |
-| Queue deserialization (size: 10000)    | `184.27 µs/iter` | `182.00 µs` | `183.67 µs` | `201.50 µs` | `217.21 µs` |
-| Queue deserialization (size: 100000)   | `  1.78 ms/iter` | `  1.77 ms` | `  1.78 ms` | `  1.91 ms` | `  1.93 ms` |
-| Queue deserialization (size: 1000000)  | ` 17.73 ms/iter` | ` 17.67 ms` | ` 17.74 ms` | ` 17.85 ms` | ` 17.92 ms` |
-| Queue deserialization (size: 10000000) | `189.58 ms/iter` | `188.05 ms` | `189.71 ms` | `191.31 ms` | `192.24 ms` |
+| Queue.enqueue (size: 1)                | ` 25.69 ns/iter` | ` 21.04 ns` | ` 27.84 ns` | ` 31.83 ns` | ` 43.11 ns` |
+| Queue.enqueue (size: 10)               | ` 25.37 ns/iter` | ` 21.81 ns` | ` 27.09 ns` | ` 30.50 ns` | ` 31.08 ns` |
+| Queue.enqueue (size: 100)              | ` 25.34 ns/iter` | ` 21.86 ns` | ` 27.18 ns` | ` 30.29 ns` | ` 31.05 ns` |
+| Queue.enqueue (size: 1000)             | ` 25.93 ns/iter` | ` 22.02 ns` | ` 28.07 ns` | ` 33.58 ns` | ` 35.99 ns` |
+| Queue.enqueue (size: 10000)            | ` 25.32 ns/iter` | ` 20.48 ns` | ` 27.45 ns` | ` 32.46 ns` | ` 33.75 ns` |
+| Queue.enqueue (size: 100000)           | ` 25.40 ns/iter` | ` 21.08 ns` | ` 27.52 ns` | ` 34.43 ns` | ` 35.31 ns` |
+| Queue.enqueue (size: 1000000)          | ` 26.22 ns/iter` | ` 21.65 ns` | ` 27.83 ns` | ` 30.53 ns` | ` 31.24 ns` |
+| Queue.enqueue (size: 10000000)         | ` 28.21 ns/iter` | ` 25.77 ns` | ` 28.88 ns` | ` 29.42 ns` | ` 32.01 ns` |
+| Queue.dequeue (size: 1)                | `  4.07 ns/iter` | `  3.87 ns` | `  4.04 ns` | `  4.74 ns` | ` 13.11 ns` |
+| Queue.dequeue (size: 10)               | `  2.63 ns/iter` | `  2.55 ns` | `  2.61 ns` | `  4.07 ns` | `  9.07 ns` |
+| Queue.dequeue (size: 100)              | `  3.25 ns/iter` | `  3.17 ns` | `  3.25 ns` | `  3.53 ns` | `  9.89 ns` |
+| Queue.dequeue (size: 1000)             | `  5.14 ns/iter` | `  5.04 ns` | `  5.14 ns` | `  6.68 ns` | ` 10.42 ns` |
+| Queue.dequeue (size: 10000)            | `  2.09 ns/iter` | `  2.03 ns` | `  2.08 ns` | `  2.29 ns` | `  7.98 ns` |
+| Queue.dequeue (size: 100000)           | `  3.24 ns/iter` | `  3.08 ns` | `  3.20 ns` | `  6.42 ns` | ` 16.51 ns` |
+| Queue.dequeue (size: 1000000)          | `  5.10 ns/iter` | `  4.91 ns` | `  5.14 ns` | `  5.66 ns` | `  6.10 ns` |
+| Queue.dequeue (size: 10000000)         | `  8.76 ns/iter` | `  5.95 ns` | `  6.76 ns` | `  7.20 ns` | ` 34.26 ns` |
+| Queue serialization (size: 1)          | ` 45.59 ns/iter` | ` 43.31 ns` | ` 46.20 ns` | ` 56.04 ns` | ` 74.62 ns` |
+| Queue serialization (size: 10)         | `122.78 ns/iter` | `118.70 ns` | `122.64 ns` | `143.57 ns` | `205.49 ns` |
+| Queue serialization (size: 100)        | `895.05 ns/iter` | `888.34 ns` | `894.60 ns` | `953.97 ns` | `978.28 ns` |
+| Queue serialization (size: 1000)       | `  8.35 µs/iter` | `  8.32 µs` | `  8.36 µs` | `  8.39 µs` | `  8.58 µs` |
+| Queue serialization (size: 10000)      | ` 79.97 µs/iter` | ` 76.96 µs` | ` 81.04 µs` | ` 92.29 µs` | `102.79 µs` |
+| Queue serialization (size: 100000)     | `749.74 µs/iter` | `733.88 µs` | `751.79 µs` | `812.33 µs` | `832.00 µs` |
+| Queue serialization (size: 1000000)    | `  7.42 ms/iter` | `  7.37 ms` | `  7.43 ms` | `  7.52 ms` | `  7.56 ms` |
+| Queue serialization (size: 10000000)   | ` 75.04 ms/iter` | ` 74.75 ms` | ` 74.90 ms` | ` 74.98 ms` | ` 77.17 ms` |
+| Queue deserialization (size: 1)        | ` 19.76 ns/iter` | ` 18.87 ns` | ` 19.62 ns` | ` 29.45 ns` | ` 38.38 ns` |
+| Queue deserialization (size: 10)       | `188.41 ns/iter` | `183.68 ns` | `186.26 ns` | `242.58 ns` | `255.13 ns` |
+| Queue deserialization (size: 100)      | `  1.79 µs/iter` | `  1.79 µs` | `  1.80 µs` | `  1.83 µs` | `  1.85 µs` |
+| Queue deserialization (size: 1000)     | ` 18.14 µs/iter` | ` 18.09 µs` | ` 18.14 µs` | ` 18.17 µs` | ` 18.28 µs` |
+| Queue deserialization (size: 10000)    | `189.60 µs/iter` | `179.04 µs` | `192.08 µs` | `233.17 µs` | `647.38 µs` |
+| Queue deserialization (size: 100000)   | `  1.86 ms/iter` | `  1.76 ms` | `  1.90 ms` | `  2.04 ms` | `  2.34 ms` |
+| Queue deserialization (size: 1000000)  | ` 18.20 ms/iter` | ` 17.80 ms` | ` 18.30 ms` | ` 19.53 ms` | ` 19.87 ms` |
+| Queue deserialization (size: 10000000) | `191.89 ms/iter` | `189.63 ms` | `192.02 ms` | `195.20 ms` | `197.84 ms` |
