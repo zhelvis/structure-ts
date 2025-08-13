@@ -58,7 +58,6 @@ export class Queue<T> {
 		this.#start = this.#start.next;
 
 		if (this.#start) {
-			delete this.#start.prev;
 			this.#start.prev = undefined;
 		} else {
 			this.#end = undefined;
