@@ -45,6 +45,19 @@ describe("RingBuffer", () => {
 			const buffer = new RingBuffer(3, [1, 2, 3, 4]);
 			expect(Array.from(buffer)).toEqual([2, 3, 4]);
 		});
+
+		it("should throw error on invalid capacity", () => {
+			expect(() => new RingBuffer(-1)).toThrow(Error);
+			expect(() => new RingBuffer(0)).toThrow(Error);
+			expect(() => new RingBuffer(Number.MAX_SAFE_INTEGER + 1)).toThrow(Error);
+			expect(() => new RingBuffer(1.5)).toThrow(Error);
+		});
+
+		it("should initialize with huge items array", () => {
+			const items = Array.from({ length: 2_000_000 }, (_, i) => i);
+			const buffer = new RingBuffer(2_000_000, items);
+			expect(Array.from(buffer)).toEqual(items);
+		});
 	});
 
 	describe("get", () => {

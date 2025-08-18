@@ -22,6 +22,10 @@ A queue is a data structure based on doubly linked list that follows the FIFO (f
 A ring buffer (or circular buffer) is a data structure that uses a single, fixed-size buffer as if it were connected end-to-end.
 It is particularly useful for buffering data streams and implementing memory efficient queues and stacks.
 
+- [`History`](https://github.com/zhelvis/structure-ts/blob/main/src/history.ts) -
+⚙️ **[API](https://zhelvis.github.io/structure-ts/classes/History.html)**
+🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/history.bench.md)**
+A history is an array-like structure with undo/redo functionality based on `RingBuffer`.
 
 ## Development
 

@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Queue`: A queue data structure for TypeScript, useful for implementing FIFO (first-in, first-out) behavior.
 - Add playground example for `RingBuffer`.
+- `History`: Array-like structure with undo/redo functionality based on `RingBuffer`.
+
+### Changed
+
+- `RingBuffer`: Constructor now throws an error if the `capacity` is not a safe positive integer.
+- `RingBuffer`: Replace delete operations with `undefined` assignments to improve performance for V8.
+- `RingBuffer`: Initialization now uses batch creation to prevent "max call stack size exceeded" errors.
+- `RingBuffer`: Update benchmarks.
 
 ## [0.1.1] - 2025-08-05
 

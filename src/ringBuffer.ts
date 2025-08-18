@@ -3,11 +3,14 @@
  * It is particularly useful for buffering data streams and implementing memory efficient queues and stacks.
  */
 export class RingBuffer<T> {
-	#capacity: number;
+	/**
+	 * Sparse fixed-size array to hold the items in the buffer.
+	 */
+	#buffer: Array<T | undefined>;
+	readonly #capacity: number;
 	#size: number;
 	#head: number;
 	#tail: number;
-	#buffer: Array<T>;
 
 	/**
 	 * The capacity of the ring buffer.
@@ -23,15 +26,35 @@ export class RingBuffer<T> {
 		return this.#size;
 	}
 
+	/**
+	 * Creates a new RingBuffer instance.
+	 *
+	 * @param capacity Maximum number of items the buffer can hold.
+	 * @param items Optional array of initial items to populate the buffer.
+	 * If the number of items exceeds capacity, the oldest items will be discarded.
+	 * @throws RangeError if capacity is not a positive safe integer.
+	 */
 	constructor(capacity: number, items?: Array<T>) {
+		if (!Number.isSafeInteger(capacity) || capacity < 1) {
+			throw new RangeError("Capacity must be a safe positive integer");
+		}
+
 		this.#capacity = capacity;
-		this.#buffer = new Array<T>(capacity);
+		this.#buffer = new Array<T | undefined>(capacity);
 		this.#head = 0;
 		this.#size = 0;
 		this.#tail = 0;
 
 		if (items) {
-			this.push(...items);
+			// Handle huge arrays by processing in batches to avoid call stack overflow
+			if (items.length > 100_000) {
+				const chunkSize = 50_000;
+				for (let i = 0; i < items.length; i += chunkSize) {
+					this.push(...items.slice(i, i + chunkSize));
+				}
+			} else {
+				this.push(...items);
+			}
 		}
 	}
 
@@ -46,6 +69,7 @@ export class RingBuffer<T> {
 			throw new RangeError("Index out of bounds");
 		}
 
+		// `this.#size & (index >> 31)` adds this.#size when index is negative
 		return (this.#head + index + (this.#size & (index >> 31))) % this.#capacity;
 	}
 
@@ -57,7 +81,8 @@ export class RingBuffer<T> {
 	 * @throws RangeError if the index is out of bounds.
 	 */
 	get(index: number): T {
-		return this.#buffer[this.#calcInternalIndex(index)];
+		// Safe cast to T, as the index is validated
+		return this.#buffer[this.#calcInternalIndex(index)] as T;
 	}
 
 	/**
@@ -117,7 +142,7 @@ export class RingBuffer<T> {
 
 		const lastIndex = (this.#tail - 1 + this.#capacity) % this.#capacity;
 		const item = this.#buffer[lastIndex];
-		delete this.#buffer[lastIndex];
+		this.#buffer[lastIndex] = undefined;
 		this.#tail = lastIndex;
 		this.#size--;
 
@@ -159,7 +184,7 @@ export class RingBuffer<T> {
 		}
 
 		const item = this.#buffer[this.#head];
-		delete this.#buffer[this.#head];
+		this.#buffer[this.#head] = undefined;
 		this.#head = (this.#head + 1) % this.#capacity;
 		this.#size--;
 

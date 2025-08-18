@@ -40,7 +40,10 @@ bench("RingBuffer.set (size: $size)", function* (state: k_state) {
 bench("RingBuffer.push (size: $size)", function* (state: k_state) {
 	const size = state.get("size");
 	const buffer = new RingBuffer(size);
-	yield () => buffer.push(42);
+	yield {
+		0: () => buffer.pop(),
+		bench: () => buffer.push(42),
+	};
 })
 	.gc("inner")
 	.range("size", 1, 100_000, 10);
@@ -48,15 +51,21 @@ bench("RingBuffer.push (size: $size)", function* (state: k_state) {
 bench("RingBuffer.pop (size: $size)", function* (state: k_state) {
 	const size = state.get("size");
 	const buffer = createFilledBuffer(size);
-	yield () => buffer.pop();
+	yield {
+		0: () => buffer.push(42),
+		bench: () => buffer.pop(),
+	};
 })
 	.gc("inner")
 	.range("size", 1, 100_000, 10);
 
 bench("RingBuffer.unshift (size: $size)", function* (state: k_state) {
 	const size = state.get("size");
-	const buffer = new RingBuffer(size);
-	yield () => buffer.unshift(42);
+	const buffer = createFilledBuffer(size);
+	yield {
+		0: () => buffer.shift(),
+		bench: () => buffer.unshift(42),
+	};
 })
 	.gc("inner")
 	.range("size", 1, 100_000, 10);
@@ -64,7 +73,10 @@ bench("RingBuffer.unshift (size: $size)", function* (state: k_state) {
 bench("RingBuffer.shift (size: $size)", function* (state: k_state) {
 	const size = state.get("size");
 	const buffer = createFilledBuffer(size);
-	yield () => buffer.shift();
+	yield {
+		0: () => buffer.unshift(42),
+		bench: () => buffer.shift(),
+	};
 })
 	.gc("inner")
 	.range("size", 1, 100_000, 10);
