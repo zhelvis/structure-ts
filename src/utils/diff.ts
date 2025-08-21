@@ -270,7 +270,7 @@ export const computeDiff = (
  * @param path - The path that caused the error
  * @returns Never returns, always throws
  */
-const throwInvalidPathError = (path: Path): Error => {
+const throwInvalidPathError = (path: Path): never => {
 	throw new Error(`Invalid path: ${path.join(".")}`);
 };
 
@@ -406,7 +406,7 @@ const clone = (value: unknown): unknown => {
  * @param action - The action with an unknown type (should be never)
  * @returns Never returns, always throws
  */
-const throwInvalidActionError = (action: never): Error => {
+const throwInvalidActionError = (action: never): never => {
 	throw new Error(`Unknown action type: ${(action as { type: unknown }).type}`);
 };
 
