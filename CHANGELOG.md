@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Queue`: A queue data structure for TypeScript, useful for implementing FIFO (first-in, first-out) behavior.
 - Add playground example for `RingBuffer`.
 - `History`: Array-like structure with undo/redo functionality based on `RingBuffer`.
+- `computeDiff`: Function to compute deep differences between two structures, returning an array of changes.
+- `applyDiff`: Function to apply a computed diff to a structure.
+- `revertDiff`: Function to revert a structure to its previous state using a diff.
 
 ### Changed
 

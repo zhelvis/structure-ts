@@ -239,7 +239,7 @@ const computeMixedDiff = (
 export const computeDiff = (
 	oldValue: unknown,
 	newValue: unknown,
-	visited = new WeakSet<object>(),
+	visited: WeakSet<object> = new WeakSet<object>(),
 ): Diff | undefined => {
 	if (oldValue === newValue) {
 		return undefined; // Early exit for strict equality
