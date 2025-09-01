@@ -2,6 +2,11 @@
 
 Data structures for typescript.
 
+⚙️ **[API](https://zhelvis.github.io/structure-ts)**
+
+🎮 **[Playground](https://bolt.new/~/structure-ts)**
+
+
 ## Installation
 
 ```
@@ -18,7 +23,6 @@ A queue is a data structure based on doubly linked list that follows the FIFO (f
 - [`RingBuffer`](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer.ts) -
 ⚙️ **[API](https://zhelvis.github.io/structure-ts/classes/RingBuffer.html)** 
 🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer.bench.md)**
-🎮 **[Playground](https://bolt.new/~/structure-ts-ring-buffer)**  
 A ring buffer (or circular buffer) is a data structure that uses a single, fixed-size buffer as if it were connected end-to-end.
 It is particularly useful for buffering data streams and implementing memory efficient queues and stacks.
 
@@ -26,6 +30,14 @@ It is particularly useful for buffering data streams and implementing memory eff
 ⚙️ **[API](https://zhelvis.github.io/structure-ts/classes/History.html)**
 🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/history.bench.md)**
 A history is an array-like structure with undo/redo functionality based on `RingBuffer`.
+
+- [`Diff utils`](https://github.com/zhelvis/structure-ts/blob/main/src/utils/diff.ts) -
+🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/utils/diff.bench.md)**
+Utils to deal with deep differences between two structures.
+    - `computeDiff` ⚙️ **[API](https://zhelvis.github.io/structure-ts/functions/computeDiff.html)** Computes the deep difference between two values.
+    - `applyDiff` ⚙️ **[API](https://zhelvis.github.io/structure-ts/functions/applyDiff.html)** Apply a computed difference to a structure.
+    - `revertDiff` ⚙️ **[API](https://zhelvis.github.io/structure-ts/functions/revertDiff.html)** Revert a structure to its previous state using a difference.
+
 
 ## Development
 
