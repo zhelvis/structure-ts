@@ -5,14 +5,25 @@ function createFilledArray(size: number): number[] {
 	return Array.from({ length: size }, (_, i) => i);
 }
 
-function createFilledHistory(size: number): History<number> {
-	return new History(size, createFilledArray(size));
+function createFilledHistory(
+	size: number,
+	currentPosition = -1,
+): History<number> {
+	return new History(size, createFilledArray(size), currentPosition);
 }
 
 bench("History.current (size: $size)", function* (state: k_state) {
 	const size = state.get("size");
 	const history = createFilledHistory(size);
 	yield () => do_not_optimize(history.current());
+})
+	.gc("inner")
+	.range("size", 10, 100_000, 10);
+
+bench("History.canUndo (size: $size)", function* (state: k_state) {
+	const size = state.get("size");
+	const history = createFilledHistory(size);
+	yield () => do_not_optimize(history.canUndo());
 })
 	.gc("inner")
 	.range("size", 10, 100_000, 10);
@@ -24,6 +35,14 @@ bench("History.undo (size: $size)", function* (state: k_state) {
 		0: () => history.push(42),
 		bench: () => history.undo(),
 	};
+})
+	.gc("inner")
+	.range("size", 10, 100_000, 10);
+
+bench("History.canRedo (size: $size)", function* (state: k_state) {
+	const size = state.get("size");
+	const history = createFilledHistory(size, -2);
+	yield () => do_not_optimize(history.canRedo());
 })
 	.gc("inner")
 	.range("size", 10, 100_000, 10);

@@ -60,6 +60,23 @@ describe("History", () => {
 		});
 	});
 
+	describe("canUndo", () => {
+		it("should return true if there is a previous item to undo to", () => {
+			const history = new History(5, [1, 2, 3]);
+			expect(history.canUndo()).toBe(true);
+		});
+
+		it("should return false if there is no previous item to undo to", () => {
+			const history = new History(5, [1]);
+			expect(history.canUndo()).toBe(false);
+		});
+
+		it("should return false if history is empty", () => {
+			const history = new History(5);
+			expect(history.canUndo()).toBe(false);
+		});
+	});
+
 	describe("undo", () => {
 		it("should restore the previous item", () => {
 			const history = new History(5, [1, 2, 3]);
@@ -73,6 +90,28 @@ describe("History", () => {
 			const history = new History(5, [1]);
 			expect(history.undo()).toBeUndefined();
 		});
+
+		it("should return undefined if history is empty", () => {
+			const history = new History(5);
+			expect(history.undo()).toBeUndefined();
+		});
+	});
+
+	describe("canRedo", () => {
+		it("should return true if there is a next item to redo to", () => {
+			const history = new History(5, [1, 2, 3], -2);
+			expect(history.canRedo()).toBe(true);
+		});
+
+		it("should return false if there is no next item to redo to", () => {
+			const history = new History(5, [1]);
+			expect(history.canRedo()).toBe(false);
+		});
+
+		it("should return false if history is empty", () => {
+			const history = new History(5);
+			expect(history.canRedo()).toBe(false);
+		});
 	});
 
 	describe("redo", () => {
@@ -85,6 +124,11 @@ describe("History", () => {
 
 		it("should return undefined if there is no next item", () => {
 			const history = new History(5, [1]);
+			expect(history.redo()).toBeUndefined();
+		});
+
+		it("should return undefined if history is empty", () => {
+			const history = new History(5);
 			expect(history.redo()).toBeUndefined();
 		});
 	});
