@@ -85,15 +85,29 @@ export class History<T> {
 	}
 
 	/**
+	 * Checks if there is a previous item to undo to.
+	 * @returns `true` if there is a previous item to undo to, `false` otherwise.
+	 */
+	canUndo(): boolean {
+		return this.#currentPosition > -this.#buffer.size;
+	}
+
+	/**
 	 * Restore previous item.
 	 * @returns The previous item or `undefined` if there is no previous item.
 	 */
 	undo(): T | undefined {
-		if (this.#currentPosition === -this.#buffer.size) {
-			return undefined;
+		if (this.canUndo()) {
+			return this.#buffer.get(--this.#currentPosition);
 		}
+	}
 
-		return this.#buffer.get(--this.#currentPosition);
+	/**
+	 * Checks if there is a next item to redo to.
+	 * @returns `true` if there is a next item to redo to, `false` otherwise.
+	 */
+	canRedo(): boolean {
+		return this.#currentPosition < -1;
 	}
 
 	/**
@@ -101,11 +115,9 @@ export class History<T> {
 	 * @returns The next item or `undefined` if there is no next item.
 	 */
 	redo(): T | undefined {
-		if (this.#currentPosition === -1) {
-			return undefined;
+		if (this.canRedo()) {
+			return this.#buffer.get(++this.#currentPosition);
 		}
-
-		return this.#buffer.get(++this.#currentPosition);
 	}
 
 	/**

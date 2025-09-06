@@ -1,36 +1,46 @@
-clk: ~3.14 GHz
+clk: ~3.10 GHz
 cpu: Apple M1 Pro
-runtime: bun 1.2.9 (arm64-darwin)
+runtime: bun 1.2.21 (arm64-darwin)
 
 | benchmark                              |              avg |         min |         p75 |         p99 |         max |
 | -------------------------------------- | ---------------- | ----------- | ----------- | ----------- | ----------- |
-| History.current (size: 10)             | `  1.36 ns/iter` | `498.54 ps` | `559.33 ps` | `  8.36 ns` | ` 14.37 ns` |
-| History.current (size: 100)            | `  3.96 ns/iter` | `  2.62 ns` | `  6.06 ns` | `  6.55 ns` | ` 14.17 ns` |
-| History.current (size: 1000)           | `  5.61 ns/iter` | `  2.63 ns` | `  6.21 ns` | `  7.25 ns` | ` 10.43 ns` |
-| History.current (size: 10000)          | `  6.19 ns/iter` | `  6.04 ns` | `  6.15 ns` | `  7.10 ns` | ` 15.36 ns` |
-| History.current (size: 100000)         | `  4.72 ns/iter` | `  4.57 ns` | `  4.72 ns` | `  7.00 ns` | ` 10.55 ns` |
-| History.undo (size: 10)                | `  2.98 ns/iter` | `  2.75 ns` | `  2.96 ns` | `  4.96 ns` | ` 10.86 ns` |
-| History.undo (size: 100)               | `  4.10 ns/iter` | `  3.91 ns` | `  4.16 ns` | `  6.12 ns` | ` 14.62 ns` |
-| History.undo (size: 1000)              | `  4.01 ns/iter` | `  3.91 ns` | `  4.05 ns` | `  4.82 ns` | `  6.40 ns` |
-| History.undo (size: 10000)             | `  4.01 ns/iter` | `  3.91 ns` | `  4.06 ns` | `  4.77 ns` | `  6.95 ns` |
-| History.undo (size: 100000)            | `  3.05 ns/iter` | `  2.94 ns` | `  3.05 ns` | `  4.39 ns` | ` 11.28 ns` |
-| History.redo (size: 10)                | `  2.21 ns/iter` | `  2.06 ns` | `  2.19 ns` | `  2.91 ns` | `  9.64 ns` |
-| History.redo (size: 100)               | `  2.70 ns/iter` | `  2.55 ns` | `  2.67 ns` | `  5.89 ns` | `  7.94 ns` |
-| History.redo (size: 1000)              | `  2.63 ns/iter` | `  2.55 ns` | `  2.66 ns` | `  3.03 ns` | `  6.55 ns` |
-| History.redo (size: 10000)             | `  2.63 ns/iter` | `  2.55 ns` | `  2.66 ns` | `  3.03 ns` | `  6.43 ns` |
-| History.redo (size: 100000)            | `  2.15 ns/iter` | `  2.06 ns` | `  2.15 ns` | `  3.05 ns` | `  6.43 ns` |
-| History.push (size: 10)                | ` 54.24 ns/iter` | ` 49.51 ns` | ` 55.07 ns` | ` 93.27 ns` | `129.60 ns` |
-| History.push (size: 100)               | ` 54.02 ns/iter` | ` 49.81 ns` | ` 54.98 ns` | ` 75.64 ns` | `119.32 ns` |
-| History.push (size: 1000)              | ` 56.26 ns/iter` | ` 49.74 ns` | ` 56.80 ns` | `118.48 ns` | `131.30 ns` |
-| History.push (size: 10000)             | ` 53.04 ns/iter` | ` 50.31 ns` | ` 54.20 ns` | ` 60.11 ns` | ` 63.18 ns` |
-| History.push (size: 100000)            | ` 52.34 ns/iter` | ` 49.14 ns` | ` 53.64 ns` | ` 62.12 ns` | ` 76.68 ns` |
-| History serialization (size: 10)       | `235.84 ns/iter` | `217.96 ns` | `246.36 ns` | `266.70 ns` | `326.54 ns` |
-| History serialization (size: 100)      | `  7.71 µs/iter` | `  5.71 µs` | `  8.25 µs` | ` 16.58 µs` | ` 29.42 µs` |
-| History serialization (size: 1000)     | ` 17.71 µs/iter` | ` 17.56 µs` | ` 17.73 µs` | ` 18.03 µs` | ` 18.12 µs` |
-| History serialization (size: 10000)    | `169.03 µs/iter` | `162.13 µs` | `170.63 µs` | `200.92 µs` | `286.29 µs` |
-| History serialization (size: 100000)   | `  1.63 ms/iter` | `  1.59 ms` | `  1.64 ms` | `  1.76 ms` | `  1.80 ms` |
-| History deserialization (size: 10)     | `103.31 ns/iter` | ` 97.61 ns` | `103.12 ns` | `160.13 ns` | `177.31 ns` |
-| History deserialization (size: 100)    | `847.11 ns/iter` | `820.55 ns` | `857.89 ns` | `920.04 ns` | `940.26 ns` |
-| History deserialization (size: 1000)   | `  8.73 µs/iter` | `  8.49 µs` | `  8.80 µs` | `  9.27 µs` | `  9.27 µs` |
-| History deserialization (size: 10000)  | ` 87.45 µs/iter` | ` 84.00 µs` | ` 88.17 µs` | `106.79 µs` | `125.54 µs` |
-| History deserialization (size: 100000) | `847.60 µs/iter` | `825.00 µs` | `855.96 µs` | `918.63 µs` | `935.25 µs` |
+| History.current (size: 10)             | `  1.40 ns/iter` | `508.54 ps` | `579.83 ps` | `  8.47 ns` | ` 15.02 ns` |
+| History.current (size: 100)            | `  3.96 ns/iter` | `  2.64 ns` | `  6.07 ns` | `  6.81 ns` | ` 15.46 ns` |
+| History.current (size: 1000)           | `  5.45 ns/iter` | `  2.63 ns` | `  6.27 ns` | `  7.19 ns` | `  8.55 ns` |
+| History.current (size: 10000)          | `  6.23 ns/iter` | `  6.05 ns` | `  6.28 ns` | `  7.11 ns` | `  9.16 ns` |
+| History.current (size: 100000)         | `  4.72 ns/iter` | `  4.57 ns` | `  4.73 ns` | `  5.64 ns` | ` 10.12 ns` |
+| History.canUndo (size: 10)             | `  3.34 ns/iter` | `  3.22 ns` | `  3.36 ns` | `  4.35 ns` | `  6.73 ns` |
+| History.canUndo (size: 100)            | `  3.74 ns/iter` | `  3.62 ns` | `  3.78 ns` | `  4.66 ns` | `  7.91 ns` |
+| History.canUndo (size: 1000)           | `  3.74 ns/iter` | `  3.62 ns` | `  3.78 ns` | `  4.65 ns` | `  7.73 ns` |
+| History.canUndo (size: 10000)          | `  3.60 ns/iter` | `  3.47 ns` | `  3.66 ns` | `  4.48 ns` | `  5.17 ns` |
+| History.canUndo (size: 100000)         | `  3.18 ns/iter` | `  3.08 ns` | `  3.22 ns` | `  3.79 ns` | `  7.75 ns` |
+| History.undo (size: 10)                | `  2.70 ns/iter` | `  2.59 ns` | `  2.71 ns` | `  5.62 ns` | `  9.09 ns` |
+| History.undo (size: 100)               | `  3.73 ns/iter` | `  3.59 ns` | `  3.76 ns` | `  4.83 ns` | `  9.60 ns` |
+| History.undo (size: 1000)              | `  3.69 ns/iter` | `  3.59 ns` | `  3.74 ns` | `  4.01 ns` | `  4.66 ns` |
+| History.undo (size: 10000)             | `  3.70 ns/iter` | `  3.60 ns` | `  3.74 ns` | `  4.07 ns` | `  5.04 ns` |
+| History.undo (size: 100000)            | `  2.62 ns/iter` | `  2.47 ns` | `  2.60 ns` | `  3.76 ns` | ` 12.24 ns` |
+| History.canRedo (size: 10)             | `  2.63 ns/iter` | `  2.54 ns` | `  2.67 ns` | `  3.21 ns` | `  7.42 ns` |
+| History.canRedo (size: 100)            | `  3.80 ns/iter` | `  3.70 ns` | `  3.86 ns` | `  4.25 ns` | `  7.67 ns` |
+| History.canRedo (size: 1000)           | `  3.79 ns/iter` | `  3.70 ns` | `  3.85 ns` | `  4.14 ns` | `  5.23 ns` |
+| History.canRedo (size: 10000)          | `  3.80 ns/iter` | `  3.70 ns` | `  3.86 ns` | `  4.14 ns` | `  5.70 ns` |
+| History.canRedo (size: 100000)         | `  2.62 ns/iter` | `  2.53 ns` | `  2.67 ns` | `  2.95 ns` | `  5.46 ns` |
+| History.redo (size: 10)                | `  2.01 ns/iter` | `  1.92 ns` | `  2.02 ns` | `  2.45 ns` | ` 11.68 ns` |
+| History.redo (size: 100)               | `  2.45 ns/iter` | `  2.36 ns` | `  2.47 ns` | `  2.94 ns` | `  6.37 ns` |
+| History.redo (size: 1000)              | `  2.43 ns/iter` | `  2.36 ns` | `  2.47 ns` | `  2.72 ns` | `  3.70 ns` |
+| History.redo (size: 10000)             | `  2.44 ns/iter` | `  2.36 ns` | `  2.48 ns` | `  2.66 ns` | `  3.47 ns` |
+| History.redo (size: 100000)            | `  2.05 ns/iter` | `  1.95 ns` | `  2.08 ns` | `  2.42 ns` | `  5.18 ns` |
+| History.push (size: 10)                | ` 49.47 ns/iter` | ` 46.65 ns` | ` 49.03 ns` | ` 87.39 ns` | `122.30 ns` |
+| History.push (size: 100)               | ` 49.39 ns/iter` | ` 47.00 ns` | ` 49.10 ns` | ` 69.41 ns` | `124.47 ns` |
+| History.push (size: 1000)              | ` 52.05 ns/iter` | ` 47.70 ns` | ` 51.78 ns` | `121.67 ns` | `129.08 ns` |
+| History.push (size: 10000)             | ` 49.37 ns/iter` | ` 47.72 ns` | ` 49.85 ns` | ` 55.18 ns` | ` 64.15 ns` |
+| History.push (size: 100000)            | ` 52.35 ns/iter` | ` 46.61 ns` | ` 50.29 ns` | `125.85 ns` | `135.86 ns` |
+| History serialization (size: 10)       | `226.11 ns/iter` | `220.03 ns` | `225.21 ns` | `264.74 ns` | `352.16 ns` |
+| History serialization (size: 100)      | `  1.80 µs/iter` | `  1.77 µs` | `  1.81 µs` | `  1.94 µs` | `  1.95 µs` |
+| History serialization (size: 1000)     | ` 17.56 µs/iter` | ` 17.15 µs` | ` 17.63 µs` | ` 17.95 µs` | ` 18.12 µs` |
+| History serialization (size: 10000)    | `169.81 µs/iter` | `162.67 µs` | `171.21 µs` | `196.33 µs` | `305.08 µs` |
+| History serialization (size: 100000)   | `  1.67 ms/iter` | `  1.61 ms` | `  1.69 ms` | `  1.88 ms` | `  1.97 ms` |
+| History deserialization (size: 10)     | ` 90.81 ns/iter` | ` 84.99 ns` | ` 91.54 ns` | `148.03 ns` | `170.95 ns` |
+| History deserialization (size: 100)    | `828.94 ns/iter` | `808.68 ns` | `827.96 ns` | `939.81 ns` | `  1.05 µs` |
+| History deserialization (size: 1000)   | `  8.60 µs/iter` | `  8.17 µs` | `  8.63 µs` | `  9.22 µs` | `  9.37 µs` |
+| History deserialization (size: 10000)  | ` 78.18 µs/iter` | ` 75.92 µs` | ` 78.92 µs` | ` 87.75 µs` | `110.42 µs` |
+| History deserialization (size: 100000) | `772.95 µs/iter` | `760.71 µs` | `773.38 µs` | `827.83 µs` | `837.54 µs` |
