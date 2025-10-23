@@ -1,4 +1,4 @@
-import { RingBuffer } from "./ringBuffer";
+import { RingBuffer } from "../ringBuffer";
 
 /**
  * Array-like structure with undo/redo functionality.
