@@ -3,6 +3,7 @@ import { RingBuffer } from "../ringBuffer";
 /**
  * Array-like structure with undo/redo functionality.
  * It uses limited stack based on {@link RingBuffer}.
+ * @group History
  */
 export class History<T> {
 	/**

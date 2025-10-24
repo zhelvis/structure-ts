@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: bun ci --os linux --cpu x64
       - name: Build static files
-        run: bunx typedoc src/index.ts
+        run: bunx typedoc src/index.ts --navigation.includeGroups 
       - name: Upload static files as artifact
         uses: actions/upload-pages-artifact@v3
         with:
