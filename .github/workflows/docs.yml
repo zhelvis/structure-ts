@@ -13,7 +13,7 @@ jobs:
       - name: Install bun
         uses: oven-sh/setup-bun@v2
       - name: Install dependencies
-        run: bun install
+        run: bun ci --os linux --cpu x64
       - name: Build static files
         run: bunx typedoc src/index.ts
       - name: Upload static files as artifact
