@@ -4,7 +4,7 @@ import { dts } from "rolldown-plugin-dts";
 export default defineConfig({
 	plugins: [
 		dts({
-			isolatedDeclarations: true,
+			oxc: true,
 		}),
 	],
 	input: "src/index.ts",

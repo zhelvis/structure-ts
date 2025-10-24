@@ -1,16 +1,19 @@
 /**
  * A key that can be used to access properties in objects or arrays.
+ * @group Diff
  */
-type Key = string | number | symbol;
+export type Key = string | number | symbol;
 
 /**
  * A path representing the location of a value in a nested structure.
  * Each element in the array represents a step in the path.
+ * @group Diff
  */
-type Path = Array<Key>;
+export type Path = Array<Key>;
 
 /**
  * Enumeration of possible diff action types.
+ * @group Diff
  */
 export enum ActionType {
 	/** Indicates a value was added */
@@ -23,8 +26,9 @@ export enum ActionType {
 
 /**
  * Represents an action that adds a value at a specific path.
+ * @group Diff
  */
-type AddAction = {
+export type AddAction = {
 	type: ActionType.ADD;
 	path: Path;
 	value: unknown;
@@ -32,8 +36,9 @@ type AddAction = {
 
 /**
  * Represents an action that removes a value at a specific path.
+ * @group Diff
  */
-type RemoveAction = {
+export type RemoveAction = {
 	type: ActionType.REMOVE;
 	path: Path;
 	value: unknown;
@@ -41,8 +46,9 @@ type RemoveAction = {
 
 /**
  * Represents an action that changes a value at a specific path.
+ * @group Diff
  */
-type ChangeAction = {
+export type ChangeAction = {
 	type: ActionType.CHANGE;
 	path: Path;
 	from: unknown;
@@ -51,11 +57,13 @@ type ChangeAction = {
 
 /**
  * Union type representing any possible diff action.
+ * @group Diff
  */
 export type Action = AddAction | RemoveAction | ChangeAction;
 
 /**
  * Array of actions representing the complete difference between two values.
+ * @group Diff
  */
 export type Diff = Action[];
 
@@ -235,6 +243,7 @@ const computeMixedDiff = (
  * // Identical values return undefined
  * const noDiff = computeDiff({ a: 1 }, { a: 1 }); // undefined
  * ```
+ * @group Diff
  */
 export const computeDiff = (
 	oldValue: unknown,
@@ -436,6 +445,7 @@ const throwInvalidActionError = (action: never): never => {
  * // result: { a: 1, b: { c: 3 }, d: 4 }
  * // original: { a: 1, b: { c: 2 } } (unchanged)
  * ```
+ * @group Diff
  */
 export const applyDiff = (target: unknown, diff: Diff): unknown => {
 	let result = clone(target);
@@ -491,6 +501,7 @@ export const applyDiff = (target: unknown, diff: Diff): unknown => {
  * const undone = revertDiff(modified, diff);
  * // undone equals original
  * ```
+ * @group Diff
  */
 export const revertDiff = (target: unknown, diff: Diff): unknown => {
 	let result = clone(target);

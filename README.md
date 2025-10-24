@@ -15,28 +15,14 @@ npm install @zhelvis/structure-ts
 
 ## What's inside?
 
-- [`Queue`](https://github.com/zhelvis/structure-ts/blob/main/src/queue.ts) -
-⚙️ **[API](https://zhelvis.github.io/structure-ts/classes/Queue.html)**
-🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/queue.bench.md)** 
-A queue is a data structure based on doubly linked list that follows the FIFO (first-in, first-out) principle.
+## What's inside?
 
-- [`RingBuffer`](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer.ts) -
-⚙️ **[API](https://zhelvis.github.io/structure-ts/classes/RingBuffer.html)** 
-🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer.bench.md)**
-A ring buffer (or circular buffer) is a data structure that uses a single, fixed-size buffer as if it were connected end-to-end.
-It is particularly useful for buffering data streams and implementing memory efficient queues and stacks.
-
-- [`History`](https://github.com/zhelvis/structure-ts/blob/main/src/history.ts) -
-⚙️ **[API](https://zhelvis.github.io/structure-ts/classes/History.html)**
-🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/history.bench.md)**
-A history is an array-like structure with undo/redo functionality based on `RingBuffer`.
-
-- [`Diff utils`](https://github.com/zhelvis/structure-ts/blob/main/src/utils/diff.ts) -
-🔬 **[Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/utils/diff.bench.md)**
-Utils to deal with deep differences between two structures.
-    - `computeDiff` ⚙️ **[API](https://zhelvis.github.io/structure-ts/functions/computeDiff.html)** Computes the deep difference between two values.
-    - `applyDiff` ⚙️ **[API](https://zhelvis.github.io/structure-ts/functions/applyDiff.html)** Apply a computed difference to a structure.
-    - `revertDiff` ⚙️ **[API](https://zhelvis.github.io/structure-ts/functions/revertDiff.html)** Revert a structure to its previous state using a difference.
+| Module | API | Benchmarks | Description |
+|------|-----|------------|-------------|
+| [`Queue`](https://github.com/zhelvis/structure-ts/blob/main/src/queue/queue.ts) | [Queue API](https://zhelvis.github.io/structure-ts/classes/Queue.html) | [Queue Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/queue/queue.bench.md) | Queue based on doubly linked list, FIFO principle. |
+| [`RingBuffer`](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer/ringBuffer.ts) | [RingBuffer API](https://zhelvis.github.io/structure-ts/classes/RingBuffer.html) | [RingBuffer Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/ringBuffer/ringBuffer.bench.md) | Circular buffer for efficient data streams, queues, stacks. |
+| [`History`](https://github.com/zhelvis/structure-ts/blob/main/src/history/history.ts) | [History API](https://zhelvis.github.io/structure-ts/classes/History.html) | [History Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/history/history.bench.md) | Array-like structure with undo/redo, based on RingBuffer. |
+| [`Diff`](https://github.com/zhelvis/structure-ts/blob/main/src/diff/diff.ts) | [computeDiff](https://zhelvis.github.io/structure-ts/functions/computeDiff.html), [applyDiff](https://zhelvis.github.io/structure-ts/functions/applyDiff.html), [revertDiff](https://zhelvis.github.io/structure-ts/functions/revertDiff.html) | [Diff Benchmarks](https://github.com/zhelvis/structure-ts/blob/main/src/diff/diff.bench.md) | Utilities for deep differences, applying and reverting changes. |
 
 
 ## Development

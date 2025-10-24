@@ -7,6 +7,7 @@ type Node<T> = {
 
 /**
  * A FIFO implementation using a doubly linked list.
+ * @group Queue
  */
 export class Queue<T> {
 	#start: Node<T> | undefined;
